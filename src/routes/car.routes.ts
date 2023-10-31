@@ -48,7 +48,7 @@ router.put("/car/:id", async (req: Request, res: Response) => {
         await controller.UpdateCar(res, request, id);
     } catch (error) {
         res.status(404).json({ message: "Car not found" });
-    }
+    } 
 });
 
 export default router;

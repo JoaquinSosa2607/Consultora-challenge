@@ -9,16 +9,54 @@
 		{
 			"name": "CreateCar",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\": \"Ferrari\",\r\n    \"model\": \"Testarossa\",\r\n    \"year\": 1998,\r\n    \"price\": 237131,\r\n    \"stock\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/car",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "CreateCar 2",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\": \"Mazda\",\r\n    \"model\": \"RX-7 FD\",\r\n    \"year\": 1998,\r\n    \"price\": 24423,\r\n    \"stock\": 7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/car",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car"
+					]
+				}
 			},
 			"response": []
 		},
@@ -26,23 +64,77 @@
 			"name": "GetCarById",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/car/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "UpdateCarPriceAndStock",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 25000,\r\n    \"stock\": 15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/car/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "UpdateCarYear",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\": 2001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/car/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
@@ -50,7 +142,18 @@
 			"name": "GetUpdatedCarById",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/car/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car",
+						"2"
+					]
+				}
 			},
 			"response": []
 		}

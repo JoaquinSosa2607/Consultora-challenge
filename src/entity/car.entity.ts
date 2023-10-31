@@ -1,10 +1,9 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Car {
-    @PrimaryColumn()
-    id: number;
-    
+    @PrimaryGeneratedColumn({ name: "id" }) id!: number;
+
     @Column()
     model: string;
 
@@ -19,4 +18,5 @@ export class Car {
 
     @Column()
     stock: number;
+    static brand: any;
 }

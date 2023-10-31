@@ -1,40 +1,52 @@
 import { Router } from "express";
-import { getRepository } from "typeorm";
 import { Request, Response } from "express";
-import { Car } from "../entity/Car";
+import { Car } from "../entity/car.entity";
+import { AppDataSource } from "../data-source";
+import { CarService } from "../services/car.service";
+import { CarController } from "../controllers/car.controller";
+import { CarRequest } from "../models/car.request";
 
 const router = Router();
+const controller = new CarController();
+const service = new CarService();
+const repository = AppDataSource.getRepository(Car);
 
-router.post("/cars", async (req: Request, res: Response) => {
-    const carRepository = getRepository(Car);
-    const { brand, model, year, price } = req.body;
-    const car = new Car();
-    car.brand = brand;
-    car.model = model;
-    car.year = year;
-    car.price = price;
-    const newCar = await carRepository.save(car);
-    res.json(newCar);
+router.post("/car", async (req: Request, res: Response) => {
+    const { brand, model, year, price, stock } = req.body;
+    const request: CarRequest = new CarRequest(
+        brand,
+        model,
+        year,
+        price,
+        stock
+    );
+    await controller.postCar(res, request);
 });
 
-router.get("/cars/:id", async (req: Request, res: Response) => {
-    const carRepository = getRepository(Car);
-    const car = await carRepository.findOne(req.params.id);
-    res.json(car);
+router.get("/test", async (req: Request, res: Response) => {
+    res.status(200).send({ Hola: "Buenas tardes" });
 });
 
-router.put("/cars/:id", async (req: Request, res: Response) => {
-    const carRepository = getRepository(Car);
-    const car = await carRepository.findOne(req.params.id);
-    if (car) {
-        const { brand, model, year, price } = req.body;
-        car.brand = brand;
-        car.model = model;
-        car.year = year;
-        car.price = price;
-        const updatedCar = await carRepository.save(car);
-        res.json(updatedCar);
-    } else {
+router.get("/car/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const car = await service.findById(id);
+    res.status(200).send(car);
+});
+
+router.put("/car/:id", async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    try {
+        const { brand, model, year, price, stock } = req.body;
+        const request: CarRequest = new CarRequest(
+            brand,
+            model,
+            year,
+            price,
+            stock
+        );
+        await controller.UpdateCar(res, request, id);
+    } catch (error) {
         res.status(404).json({ message: "Car not found" });
     }
 });

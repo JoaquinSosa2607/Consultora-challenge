@@ -22,7 +22,7 @@ Luego, utilice el comando `"cd"` para acceder a la carpeta del mismo y una vez a
 
 Para poder correr este proyecto es necesario tener instalado MySql y crear una base de datos con el nombre `concesionaria_db`, en caso de crearla con otro nombre especificarlo en el archivo `data-source.ts`.
 
-En el mismo repositorio hay un archivo llamado `Test.postman_collection.json` que contiene una collección de peticiones ya creadas para testear el proyecto.
+En el mismo repositorio hay un archivo llamado `Test.postman_collection.json` que contiene una colección de peticiones ya creadas para testear el proyecto.
 
 # Referencias utilizadas para la realización de este proyecto: 
 
